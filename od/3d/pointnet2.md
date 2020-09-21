@@ -1,0 +1,4 @@
+# PointNet++ (WIP)
+
+## Q: How does PointNet++ stack uneven batches?
+[This](https://towardsdatascience.com/torch-points3d-a-unifying-framework-for-deep-learning-on-point-clouds-94115c0be4fb) link gives a lot of information on how PointNet++ stacks the batches. Essentially, there's a set sample amount. If the point cloud in the batch is less than the required sample amount, the batch is over sampled. If the point cloud is much bigger, the batch is undersampled with a priority on farther samples. See [here](https://github.com/open-mmlab/OpenPCDet/blob/07419768607d76ee16b4f8d641ee7f1990ec55d8/pcdet/datasets/processor/data_processor.py#L77) for code implementations in OpenPCDet. This type of sampling is called **dense** sampling.
