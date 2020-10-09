@@ -61,7 +61,7 @@ def bmatrix(a):
         raise ValueError('bmatrix can at most display two dimensions')
     lines = str(a).replace('[', '').replace(']', '').splitlines()
     rv = [r'\begin{bmatrix}']
-    rv += ['  ' + ' & '.join(l.split()) + r'\\' for l in lines]
+    rv += ['  ' + ' & '.join([d[:-1] if d.endswith('.') else d for d in l.split()]) + r'\\' for l in lines]
     rv +=  [r'\end{bmatrix}']
     return '\n'.join(rv)
 ```
